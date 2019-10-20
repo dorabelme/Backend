@@ -18,6 +18,11 @@ app.use("/api/question", quest);
 app.use("/api/user", user);
 app.use("/", basic);
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 module.exports = app;
 mongoose
   .connect(
