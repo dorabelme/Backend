@@ -23,6 +23,8 @@ app.use((req, res, next) => {
   next();
 });
 
+console.log(DB_CONNECTION);
+
 module.exports = app;
 mongoose
   .connect(
