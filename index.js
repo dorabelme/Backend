@@ -9,7 +9,7 @@ const quest = require("./routes/questions");
 const user = require("./routes/user");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const PASS = process.env.PASS;
+const DB_CONNECTION = process.env.DB_CONNECTION;
 app.use(express.json());
 app.use(cors());
 app.use("/api/auth", auth);
@@ -26,7 +26,9 @@ app.use((req, res, next) => {
 module.exports = app;
 mongoose
   .connect(
-    `mongodb+srv://admin:${PASS}@guesswho-faq0g.mongodb.net/test?retryWrites=true&w=majority`,
+    // `mongodb+srv://admin:${PASS}@guesswho-faq0g.mongodb.net/test?retryWrites=true&w=majority`,
+    DB_CONNECTION,
+
     { useNewUrlParser: true }
   )
   .then(data => {
@@ -35,6 +37,6 @@ mongoose
   .catch(err => console.log(err));
 
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`CONNECT TO PORT ${PORT}`);
 });
