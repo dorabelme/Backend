@@ -31,7 +31,7 @@ mongoose
     // `mongodb+srv://admin:${PASS}@guesswho-faq0g.mongodb.net/test?retryWrites=true&w=majority`,
     DB_CONNECTION,
 
-    { useNewUrlParser: true }
+    { useNewUrlParser: true, autoReconnect: true, reconnectTries: Number.MAX_VALUE, reconnectInterval: 500 }
   )
   .then(data => {
     console.log("CONNECTED TO MONGODB");
