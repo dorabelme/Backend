@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const { Tweet } = require("../models/tweet");
-const { Ocand } = require("../models/ocand");
+const { Candidate } = require("../models/candidate");
 const { authenticate } = require("../middleware/authenticate");
 const secret = process.env.JWT_SECRET;
 
 router.get("/", authenticate, async (req, res) => {
   try {
-    let cand = await Ocand.find();
+    let cand = await Candidate.find();
     let rand = [];
     let max = cand.length;
 
